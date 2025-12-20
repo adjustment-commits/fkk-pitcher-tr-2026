@@ -126,9 +126,6 @@ textarea{min-height:110px; resize:vertical}
   align-items:center;
   gap:8px;
 }
-  #btnToggleRec {
-  display:none;
-}
 .pills{display:flex; gap:8px; flex-wrap:wrap}
 .pill{
   display:inline-flex;
@@ -556,7 +553,7 @@ const PROGRAM = {
     ex("E03","シャフト・オーバーヘッドリフト（呼吸付き）","胸郭の上下＋骨盤の安定","シャフト","6回×2set（RPE5-6）","肩で上げない。吸気で上へ、吐気で骨盤を安定させて下ろす。","./img/e03-shaft-oh.jpg"),
     ex("E04","反応スプリント 10m","初動を骨盤から。吐いて1歩目","コーン/目印","10m×6本（休40-60秒）RPE7-8","腕で飛び出さない。1歩目で吐けるかを最優先。","./img/e04-react-10m.jpg"),
     ex("E05","500m通路インターバル","心拍反応と回復Δ。合流の土台","通路（片道500m）","500m×6本（レスト90秒）RPE7.5〜8","走り終わり直後心拍→1分後心拍を記録。呼吸停止しない速度で。","./img/e05-500m.jpg"),
-    ex("E06","代替：30秒走＋60秒歩","混雑/不可時の置換","任意","30/60×10（RPE7.5）","30秒は吐ける強度。60秒歩で吸2吐2に戻す。","img/e06-30on60off.jpg"),
+    ex("E06","代替：30秒走＋60秒歩","混雑/不可時の置換","任意","30/60×10（RPE7.5）","30秒は吐ける強度。60秒歩で吸2吐2に戻す。","./img/e06-30on60off.jpg"),
     ex("E07","プライオ・リズムスロー（ネット）","順序（骨盤→胸郭→腕）固定","プライオ/ネット","軽〜中：6回×3set（RPE7）","強投禁止。毎回同じリリース位置。吐気で“抜ける”。","./img/e07-plyo-rhythm.jpg"),
     ex("E08","代替：チューブ回旋プレス（スプリット）","回旋を吐気で制御して作る","チューブ","左右10回×2set（RPE7）","骨盤を固定しすぎない。胸郭が“遅れて出る”。","./img/e08-tube-rotpress.jpg"),
     ex("E09","KB/DBスプリットスクワット（呼吸付き）","前脚で支えて吐いて立つ","KB or DB","各脚8回×2set（RPE7）","吐気で立つ。吸気で降りる。膝が内に潰れたら負荷↓。","./img/e09-split-sq.jpg"),
@@ -849,7 +846,11 @@ function renderLibrary(){
           <div class="meta"><span class="chip">10種目</span></div>
         </div>
         <div class="small" style="margin-top:8px">
-          ${g.items.map(s=>"・"+escapeHtml(s)).join("<br>")}
+         ${g.items.map(it=>`
+  <div class="small" style="margin-bottom:6px">
+    ・${escapeHtml(it.name)} ｜ ${escapeHtml(it.load)} ｜ ${escapeHtml(it.cue)}
+  </div>
+`).join("")}
         </div>
       </div>
     `;
