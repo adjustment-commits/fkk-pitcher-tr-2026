@@ -322,7 +322,7 @@ input[type="checkbox"]{
 <header>
   <div class="wrap">
     <h1>FKK投手｜1月メニュー（Week1-2）｜4人＋新人ベースライン</h1>
-    <p class="sub">目的：雪シーズンでも「呼吸×出力×流れ」を崩さず、立ち投げ期（1月中旬〜）へ繋げる。新人は「選択権なしの最低基準（ベースライン）」として運用。</p>
+    <p class="sub">目的：雪シーズンでも「呼吸×出力×流れ」を崩さず、立ち投げ期（1月中旬〜）へ繋げる。新人は「最低基準（ベースライン）」として運用。</p>
     <div class="toolbar">
       <div class="select">
         <select id="athleteSelect"></select>
@@ -334,7 +334,7 @@ input[type="checkbox"]{
     <div class="row">
       <span class="pill"><b>週2回</b>（DAY1/DAY2）</span>
       <span class="pill"><b>Week1-2</b>（同構成で反復）</span>
-      <span class="pill"><b>RPE</b> 7〜8を淡々と（新人は選択権なし）</span>
+      <span class="pill"><b>RPE</b> 7〜8を淡々と（新人はベースライン）</span>
       <span class="pill"><b>投げ環境</b>：ネットスロー／プライオ／MB（別場所）／チューブ／シャフト／DB／KB</span>
     </div>
   </div>
@@ -392,7 +392,7 @@ input[type="checkbox"]{
   </div>
   <hr class="sep">
   <div class="note">
-    新人（ベースライン）は「きつい」よりも「逃げられない構造」。呼吸停止・代償・左右差が出たら、その場で強度を下げて質を戻す（量で押さない）。
+    新人（ベースライン）は「きつい」よりも「社会人投手としての構造作り」。呼吸停止・代償・左右差が出たら、その場で強度を下げて質を戻す（量で押さない）。
   </div>
 </section>
 
@@ -507,7 +507,7 @@ input[type="checkbox"]{
 const ATHLETES = [
   {
     id:"base",
-    name:"新人（ベースライン｜選択権なし）",
+    name:"新人（ベースライン）",
     tag:"BASELINE",
     profile:"合流前の準備不足で壊れやすい層を想定。『きつい』ではなく『逃げられない構造』で、呼吸停止・代償・左右差を早期に可視化する。量より質。全ての動作で呼吸を止めない。",
     theme:"呼吸×動作（止めない）",
@@ -527,7 +527,7 @@ const ATHLETES = [
   },
   {
     id:"tatsumura",
-    name:"辰村｜フォーム課題多いが落ち着きは最上位",
+    name:"辰村｜フォームなど課題多いが落ち着きは最上位",
     tag:"TATSUMURA",
     profile:"フォーム改善点は多いが、投手としての落ち着きがある。姿勢を探しすぎず、骨盤主導の推進と胸郭の自由度を保ったまま投げに繋ぐ。『形』より『順序』。",
     theme:"順序（骨盤→胸郭→腕）",
@@ -537,7 +537,7 @@ const ATHLETES = [
   },
   {
     id:"miyake",
-    name:"三宅｜出力高いが勝負球がなく連打されやすい",
+    name:"三宅｜出力の高さと経験値を活かしたい",
     tag:"MIYAKE",
     profile:"出力は高いが勝負球の軸が立ちにくい。出力を上げるより、同じ出力を『毎回同じ順序で出せる』こと。疲労下での再現（同じリリースの前提）を作る。",
     theme:"再現（疲労下）",
