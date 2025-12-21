@@ -19,6 +19,7 @@
   --muted:#6b7280;
   --accent:#0ea5e9;
   --accentSoft:rgba(14,165,233,0.10);
+  --danger:#dc2626;
   font-family:"Noto Sans JP",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
@@ -32,7 +33,7 @@ a{color:inherit}
 .wrap{
   max-width:980px;
   margin:0 auto;
-  padding:16px 14px 90px;
+  padding:16px 14px 92px;
 }
 header{
   padding:18px 14px 12px;
@@ -42,6 +43,7 @@ header{
 h1{
   margin:0 0 6px;
   font-size:1.25rem;
+  letter-spacing:.01em;
 }
 .sub{
   margin:0;
@@ -52,17 +54,23 @@ h1{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
+  align-items:center;
   margin-top:12px;
 }
 .pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
   padding:7px 10px;
   border-radius:999px;
   border:1px solid var(--line);
   background:#fff;
+  color:#0f172a;
   font-size:.88rem;
 }
+.pill b{color:#111827}
 .card{
-  background:#fff;
+  background:var(--card);
   border:1px solid var(--line);
   border-radius:14px;
   padding:14px;
@@ -75,18 +83,30 @@ h1{
 .mini{
   color:var(--muted);
   font-size:.9rem;
+  margin:6px 0 0;
+}
+.hr{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:12px 0;
 }
 .btnRow{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
+  align-items:center;
   margin-top:10px;
 }
 .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
   border-radius:12px;
   padding:10px 12px;
   border:1px solid var(--line);
   background:#fff;
+  color:#111827;
   cursor:pointer;
   font-size:.95rem;
   text-decoration:none;
@@ -96,27 +116,22 @@ h1{
   background:rgba(14,165,233,0.10);
   color:#0c4a6e;
 }
-.ol{
-  margin:10px 0 0;
-  padding-left:20px;
+.btn.danger{
+  border-color:rgba(220,38,38,0.25);
+  background:rgba(220,38,38,0.06);
+  color:#7f1d1d;
 }
-.ol li{
-  margin:6px 0;
-}
-.sepHint{
-  background:rgba(14,165,233,0.08);
-  border:1px solid rgba(14,165,233,0.18);
-  padding:10px 12px;
-  border-radius:12px;
-  color:#0c4a6e;
-  margin-bottom:10px;
-}
-.warnHint{
-  background:rgba(245,158,11,0.10);
-  border:1px solid rgba(245,158,11,0.22);
-  padding:10px 12px;
-  border-radius:12px;
-  color:#7c2d12;
+.btn:active{transform:translateY(1px)}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--muted);
+  font-size:.82rem;
 }
 .grid2{
   display:grid;
@@ -126,6 +141,31 @@ h1{
 @media (max-width:860px){
   .grid2{grid-template-columns:1fr}
 }
+.blockTitle{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:6px;
+}
+.ol{
+  margin:10px 0 0;
+  padding-left:20px;
+}
+.ol li{
+  margin:10px 0;
+}
+.kv{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:8px;
+  margin-top:10px;
+}
+@media (max-width:560px){
+  .kv{grid-template-columns:1fr}
+}
+.kv .k{color:var(--muted)}
 input[type="checkbox"]{
   width:18px;height:18px;
   accent-color:var(--accent);
@@ -134,24 +174,104 @@ input[type="text"], textarea, select{
   width:100%;
   border:1px solid var(--line);
   border-radius:12px;
-  padding:10px;
+  padding:10px 10px;
+  font-size:1rem;
+  outline:none;
+  background:#fff;
+  color:#111827;
 }
-textarea{min-height:110px}
+textarea{min-height:110px; resize:vertical}
+.sepHint{
+  background:rgba(14,165,233,0.08);
+  border:1px solid rgba(14,165,233,0.18);
+  padding:10px 12px;
+  border-radius:12px;
+  color:#0c4a6e;
+}
+.warnHint{
+  background:rgba(245,158,11,0.10);
+  border:1px solid rgba(245,158,11,0.22);
+  padding:10px 12px;
+  border-radius:12px;
+  color:#7c2d12;
+}
+.footer{
+  margin-top:16px;
+  color:var(--muted);
+  font-size:.9rem;
+  text-align:center;
+}
 details{
   border:1px dashed var(--line);
   border-radius:14px;
   padding:10px 12px;
+  background:#fff;
 }
-details+details{margin-top:10px}
+details + details{margin-top:10px}
 summary{
   cursor:pointer;
-  font-weight:600;
+  list-style:none;
+  font-weight:700;
 }
-.footer{
-  margin-top:16px;
-  text-align:center;
+summary::-webkit-details-marker{display:none}
+.smallList{
+  margin:10px 0 0;
+  padding-left:18px;
+  color:#111827;
+}
+.smallList li{
+  margin:6px 0;
+}
+.stickyTop{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom:1px solid var(--line);
+  padding:10px 14px;
+  margin:-16px -14px 12px;
+}
+.tagLine{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:6px 10px;
+  background:#fff;
+  color:#0f172a;
+  font-size:.86rem;
+}
+.tag b{font-weight:800}
+.itemBox{
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:12px;
+  padding:10px 10px;
+  background:#fff;
+}
+.itemBox .name{
+  font-weight:800;
+  margin:0 0 6px;
+}
+.itemBox .meta{
   color:var(--muted);
   font-size:.9rem;
+  margin:0;
+}
+.itemBox .cue{
+  color:#111827;
+  font-size:.92rem;
+  margin:6px 0 0;
+}
+.itemBox .cue b{
+  color:#0c4a6e;
 }
 </style>
 </head>
@@ -159,152 +279,756 @@ summary{
 <header>
   <div class="wrap">
     <h1>FKK投手｜トレーニングメニュー｜Vol.01</h1>
-    <p class="sub">雪シーズンでも「呼吸 × 順序 × 流れ」を崩さず、立ち投げ期へ繋げる。全員共通。</p>
+    <p class="sub">全員共通。ブルペン前提の「耐える」ストレスを入れる（プライオボールは各自で別枠）。</p>
 <div class="btnRow">
-  <a class="btn primary" href="https://adjustment-commits.github.io/pitcher-training-2025/" target="_blank">▶ 2025参照</a>
-  <button class="btn" id="btnOpenLibrary">種目ライブラリ</button>
-  <button class="btn" id="btnReset">進捗リセット</button>
+  <a class="btn primary" href="https://adjustment-commits.github.io/pitcher-training-2025/" target="_blank" rel="noopener">▶ 2025参照</a>
+  <button class="btn" id="btnOpenLibrary">補強10種（一覧）</button>
+  <button class="btn danger" id="btnReset">端末内リセット</button>
 </div>
 
 <div class="row">
-  <span class="pill">Vol.01</span>
-  <span class="pill">週2回（同一メニュー反復）</span>
-  <span class="pill">RPE 8–9</span>
-</div>
+  <span class="pill"><b>Vol.01</b></span>
+  <span class="pill"><b>週2回</b>（同一メニュー反復）</span>
+  <span class="pill"><b>RPE</b> 8–9</span>
+  <span class="pill"><b>ブロック分離</b>：エクササイズ → ランニング</span>
+</div>  
   </div>
 </header>
 <div class="wrap">
-<section class="card">
-  <div class="grid2">
-    <label class="pill">
-      <input type="checkbox" id="chkDone"> 実施済み
+  <div class="stickyTop">
+    <div class="blockTitle">
+      <div>
+        <b style="font-size:1.05rem">今日やること（迷わない）</b>
+        <div class="mini">① エクササイズ（同一場所） → ② ランニング（場所移動）</div>
+      </div>
+      <span class="badge" id="sessionKey">Vol.01</span>
+    </div>
+  </div>
+  <section class="card">
+    <div class="blockTitle">
+      <h2>記録</h2>
+      <span class="badge">端末内保存</span>
+    </div>
+<div class="grid2">
+  <div>
+    <label class="pill" style="cursor:pointer">
+      <input type="checkbox" id="chkDone">
+      <b>実施済みにする</b>
     </label>
-<select id="whoSelect">
-  <option value="all">全体（共通）</option>
-  <option value="p1">P1</option>
-  <option value="p2">P2</option>
-  <option value="p3">P3</option>
-  <option value="p4">P4</option>
-  <option value="new">新人</option>
-</select>
+    <div class="mini">「やった／やってない」だけ記録。細かい管理は不要。</div>
   </div>
-    <div class="grid2" style="margin-top:10px">
-    <input type="text" id="inpRPE" placeholder="RPE（例：8.5）">
-    <input type="text" id="inpHR" placeholder="心拍（例：直後165 / 1分後120）">
+  <div>
+    <select id="whoSelect" aria-label="記録者">
+      <option value="all">記録：全体（共通）</option>
+      <option value="p1">記録：P1</option>
+      <option value="p2">記録：P2</option>
+      <option value="p3">記録：P3</option>
+      <option value="p4">記録：P4</option>
+      <option value="new">記録：新人</option>
+    </select>
+    <div class="mini">端末1つ運用OK。記録者だけ切替。</div>
   </div>
-  <textarea id="txtNote" placeholder="メモ（左右差・違和感・投げの感覚など）"></textarea>
-  <div class="btnRow">
-    <button class="btn primary" id="btnSave">保存</button>
-    <span id="saveHint" class="mini">—</span>
+</div>
+
+<div class="kv">
+  <div class="k">当日のRPE</div>
+  <div class="v"><input type="text" id="inpRPE" placeholder="例：8.5"></div>
+  <div class="k">心拍メモ</div>
+  <div class="v"><input type="text" id="inpHR" placeholder="例：直後165 / 1分後120"></div>
+  <div class="k">メモ</div>
+  <div class="v"><textarea id="txtNote" placeholder="例：崩れた局面、左右差、痛み、投げの感覚 など"></textarea></div>
+</div>
+
+<div class="btnRow">
+  <button class="btn primary" id="btnSave">保存</button>
+  <span class="badge" id="saveHint">—</span>
+</div>
+
+<div class="warnHint" style="margin-top:10px">
+  ルール：痛みは即中断。フォームが崩れたら「負荷 / 回数 / 速度」を下げて続行（気合いで押さない）。
+</div>
+  </section>
+  <section class="card" id="blockA">
+    <div class="blockTitle">
+      <h2>Block A｜エクササイズ（同一場所）</h2>
+      <span class="badge">順番固定</span>
+    </div>
+  <div class="sepHint">
+  ここは移動なし。分かりにくい説明は捨てる。書いてある通りにやって終わり。
+</div>
+
+<div class="tagLine" style="margin-top:6px">
+  <span class="tag"><b>道具</b>：チューブ / ダンベル（軽）/ タオル / 輪ゴム</span>
+  <span class="tag"><b>禁止</b>：プライオボール（各自別枠）</span>
+</div>
+
+<ol class="ol" id="listA"></ol>
+  </section>
+    <section class="card" id="blockB">
+    <div class="blockTitle">
+      <h2>Block B｜ランニング（場所移動）</h2>
+      <span class="badge">走るだけ</span>
+    </div>
+<div class="sepHint">
+  ここは走る。間にエクササイズを挟まない（場所の都合を優先）。
+</div>
+
+<ol class="ol" id="listB"></ol>
+
+<div class="mini" style="margin-top:10px">
+  推奨：500mは「直後→1分後」の心拍を記録。回復が遅い日は全体の本数を1〜2本減らしてOK。
+</div>
+    </section>
+    <section class="card">
+    <div class="blockTitle">
+      <h2>補助（見たい人用）</h2>
+      <span class="badge">置換・追加の候補</span>
+    </div>
+<div class="mini" style="margin-bottom:10px">
+  ここは「今日やるもの」ではない。必要なときだけ見る。
+</div>
+
+<details>
+  <summary>＋ ベース10種</summary>
+  <ul class="smallList" id="libBase"></ul>
+</details>
+
+<details>
+  <summary>＋ ジム推奨10種</summary>
+  <ul class="smallList" id="libGym"></ul>
+</details>
+
+<details>
+  <summary>＋ 肩補強10種</summary>
+  <ul class="smallList" id="libShoulder"></ul>
+</details>
+
+<details>
+  <summary>＋ 肘補強10種</summary>
+  <ul class="smallList" id="libElbow"></ul>
+</details>
+
+<details>
+  <summary>＋ 手指補強10種</summary>
+  <ul class="smallList" id="libHand"></ul>
+</details>
+
+<details>
+  <summary>＋ 背筋補強10種</summary>
+  <ul class="smallList" id="libBack"></ul>
+</details>
+
+<details>
+  <summary>＋ 体幹補強10種</summary>
+  <ul class="smallList" id="libCore"></ul>
+</details>
+
+<details>
+  <summary>＋ 股関節補強10種</summary>
+  <ul class="smallList" id="libHip"></ul>
+</details>
+
+<details>
+  <summary>＋ 足首補強10種</summary>
+  <ul class="smallList" id="libAnkle"></ul>
+</details>
+
+<details>
+  <summary>＋ 下半身補強10種</summary>
+  <ul class="smallList" id="libLower"></ul>
+</details>
+
+<details>
+  <summary>＋ 最大酸素摂取量補強10種</summary>
+  <ul class="smallList" id="libVO2"></ul>
+</details>
+
+<details>
+  <summary>＋ スプリント補強10種</summary>
+  <ul class="smallList" id="libSprint"></ul>
+</details>
+
+<details>
+  <summary>＋ プライオ補強10種</summary>
+  <ul class="smallList" id="libPlyo"></ul>
+</details>
+
+<details>
+  <summary>＋ ボディバランス補強10種</summary>
+  <ul class="smallList" id="libBalance"></ul>
+</details>
+
+  </section>
+  <div class="footer">© 2026 adjustment-lab / FKK Pitcher Program Vol.01</div>
+</div>
+<!-- Modal: Library -->
+<div id="modalLibrary" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:999;padding:14px;overflow:auto">
+  <div style="max-width:920px;margin:6vh auto;background:#fff;border:1px solid rgba(0,0,0,0.18);border-radius:14px;padding:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <h2 style="margin:0">補強10種（一覧）</h2>
+      <button class="btn" id="btnCloseLibrary">閉じる</button>
+    </div>
+    <div class="mini" style="margin-top:6px">必要なときだけ見る。今日はメニューに書いてあることだけやる。</div>
+    <div class="hr"></div>
+<details open>
+  <summary>ベース10種 / ジム推奨10種</summary>
+  <div class="grid2" style="margin-top:10px">
+    <div>
+      <b>ベース10種</b>
+      <ul class="smallList" id="libBaseModal"></ul>
+    </div>
+    <div>
+      <b>ジム推奨10種</b>
+      <ul class="smallList" id="libGymModal"></ul>
+    </div>
   </div>
-  <div class="warnHint">痛みは即中断。形が崩れたら負荷・回数を下げて継続。</div>
-</section>
-<section class="card">
-  <h2>Block A｜エクササイズ</h2>
-  <div class="sepHint">移動なし。順番固定。</div>
-  <ol class="ol" id="listA"></ol>
-</section>
-<section class="card">
-  <h2>Block B｜ランニング</h2>
-  <div class="sepHint">走るだけ。間に他種目を挟まない。</div>
-  <ol class="ol" id="listB"></ol>
-</section>
-<section class="card">
-  <h2>補助（見たい人用）</h2>
-  <details>
-    <summary>＋ ベース10種目</summary>
-    <ul id="libBase"></ul>
-  </details>
-  <details>
-    <summary>＋ ジム推奨10種目</summary>
-    <ul id="libGym"></ul>
-  </details>
-</section>
-<div class="footer">© adjustment-lab / FKK Pitcher Program Vol.01</div>
+</details>
+
+<details>
+  <summary>肩 / 肘 / 手指</summary>
+  <div class="grid2" style="margin-top:10px">
+    <div>
+      <b>肩補強10種</b>
+      <ul class="smallList" id="libShoulderModal"></ul>
+    </div>
+    <div>
+      <b>肘補強10種</b>
+      <ul class="smallList" id="libElbowModal"></ul>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:10px">
+    <div>
+      <b>手指補強10種</b>
+      <ul class="smallList" id="libHandModal"></ul>
+    </div>
+    <div>
+      <b>背筋補強10種</b>
+      <ul class="smallList" id="libBackModal"></ul>
+    </div>
+  </div>
+</details>
+
+<details>
+  <summary>体幹 / 股関節 / 足首 / 下半身</summary>
+  <div class="grid2" style="margin-top:10px">
+    <div>
+      <b>体幹補強10種</b>
+      <ul class="smallList" id="libCoreModal"></ul>
+    </div>
+    <div>
+      <b>股関節補強10種</b>
+      <ul class="smallList" id="libHipModal"></ul>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:10px">
+    <div>
+      <b>足首補強10種</b>
+      <ul class="smallList" id="libAnkleModal"></ul>
+    </div>
+    <div>
+      <b>下半身補強10種</b>
+      <ul class="smallList" id="libLowerModal"></ul>
+    </div>
+  </div>
+</details>
+
+<details>
+  <summary>VO2 / スプリント / プライオ / バランス</summary>
+  <div class="grid2" style="margin-top:10px">
+    <div>
+      <b>最大酸素摂取量補強10種</b>
+      <ul class="smallList" id="libVO2Modal"></ul>
+    </div>
+    <div>
+      <b>スプリント補強10種</b>
+      <ul class="smallList" id="libSprintModal"></ul>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:10px">
+    <div>
+      <b>プライオ補強10種</b>
+      <ul class="smallList" id="libPlyoModal"></ul>
+    </div>
+    <div>
+      <b>ボディバランス補強10種</b>
+      <ul class="smallList" id="libBalanceModal"></ul>
+    </div>
+  </div>
+</details>
+  </div>
 </div>
 <script>
-const STORAGE_KEY = who => `FKK_PITCH_VOL01::${who}`;
+/* ========= Vol 固定 ========= */
+const VOL_ID = "VOL01";
+const STORAGE_PREFIX = `FKK_PITCH_${VOL_ID}::`;
 
+/* ========= メニュー（Vol.01） =========
+  方針：
+  - ブルペン前提の「耐える」ストレス
+  - 説明は短く、誰でも同じ動作ができる言葉だけ
+  - 1〜4（整える系）やプライオボールは入れない（各自別枠）
+  - 流れ：立位で始めて → 上肢ストレス → 前腕/手指 → 体幹/下半身の支え → 終了
+*/
 const BLOCK_A = [
-  ["スプリットスタンス・ブレス","各脚30秒×3｜吐いて腹圧"],
-  ["クワドラペッド・リーチ","左右10回×3"],
-  ["シャフトOHリフト","6回×3"],
-  ["プライオ・リズムスロー","6回×4"],
-  ["DB/KBスプリットSQ","各脚8回×3"],
-  ["デッドバグ","左右8回×2"]
+  {
+    name:"A1｜立位 チューブ・外旋（肘90°・脇タオル）",
+    method:"チューブを横に引く。肘は体の横で90°固定。手だけ外へ。",
+    dose:"左右 12回×3set｜テンポ 2秒で開く→2秒で戻す｜RPE8",
+    rest:"休 45秒",
+    cue:"脇にタオルを挟んで落とさない。肘の位置が動いたら負荷を下げる。"
+  },
+  {
+    name:"A2｜立位 チューブ・内旋（肘90°・脇タオル）",
+    method:"チューブを横に引く。肘は体の横で90°固定。手だけ内へ。",
+    dose:"左右 12回×3set｜テンポ 2秒で引く→2秒で戻す｜RPE8",
+    rest:"休 45秒",
+    cue:"肩が前に出ない。肘が体から離れたら負荷を下げる。"
+  },
+  {
+    name:"A3｜立位 チューブ・ロー（肩甲骨を下げて引く）",
+    method:"胸を張りすぎない。肘を後ろへ引いて戻す。",
+    dose:"12回×3set｜最後の2回がキツい負荷｜RPE8-9",
+    rest:"休 60秒",
+    cue:"すくめない。背中で引いて、腕だけで引かない。"
+  },
+  {
+    name:"A4｜立位 チューブ・プレス（肩前の耐性）",
+    method:"胸の前で押す。腰反りは禁止。手首は真っ直ぐ。",
+    dose:"10回×3set｜テンポ 1秒で押す→2秒で戻す｜RPE8",
+    rest:"休 60秒",
+    cue:"肘が痛い/違和感が出たら回数を8回に落とす。"
+  },
+  {
+    name:"A5｜壁プッシュ（肘を伸ばし切って肩甲骨だけ前へ）",
+    method:"壁に手をつき、肘は伸ばしたまま肩甲骨を前へ出す→戻す。",
+    dose:"15回×2set｜RPE7-8",
+    rest:"休 45秒",
+    cue:"肘は曲げない。肩がすくんだら中止して回数を減らす。"
+  },
+  {
+    name:"A6｜前腕：ハンマー回内回外（肘は体側固定）",
+    method:"ハンマー/短いバット/ダンベルを持ち、手首で回す（肘は動かさない）。",
+    dose:"左右 10回×3set｜最後の2回がキツい｜RPE8",
+    rest:"休 45秒",
+    cue:"肘が動いたら重すぎ。軽くしてOK。"
+  },
+  {
+    name:"A7｜手首：リストカール（掌側）",
+    method:"前腕を太ももに置いて固定。手首だけ曲げ伸ばし。",
+    dose:"15回×2set｜RPE8（パンプする重さ）",
+    rest:"休 45秒",
+    cue:"反動禁止。痛みが出るなら回数を10回に。"
+  },
+  {
+    name:"A8｜手首：リバースリストカール（甲側）",
+    method:"前腕固定。手首だけ反らす。",
+    dose:"15回×2set｜RPE8（甲側が焼ける重さ）",
+    rest:"休 45秒",
+    cue:"手首が折れるほど重くしない。"
+  },
+  {
+    name:"A9｜手指：輪ゴム開き（指を開く）",
+    method:"指に輪ゴムをかけて、指を開く→戻す。",
+    dose:"20回×2set｜RPE8（焼ける）",
+    rest:"休 30秒",
+    cue:"速くやりすぎない。開き切る。"
+  },
+  {
+    name:"A10｜下半身：DB/自重 スプリットスクワット（片脚で支える）",
+    method:"前脚に体重。後脚は補助。膝はつま先方向。",
+    dose:"左右 8回×3set｜最後2回がギリ｜RPE8-9",
+    rest:"休 75秒",
+    cue:"膝が内に潰れたら負荷を下げる。腰が反るなら回数を6回に。"
+  },
+  {
+    name:"A11｜下半身：ヒップヒンジ（RDL動作・軽負荷）",
+    method:"お尻を後ろへ。背中は丸めない。膝は軽く曲げる。",
+    dose:"10回×3set｜RPE8（ハムと尻に効く）",
+    rest:"休 60秒",
+    cue:"腰に張りが出たら軽くする。背中が丸まったら中止。"
+  },
+  {
+    name:"A12｜持つ：スーツケースキャリー（片手で持って歩く）",
+    method:"片手でDB/KBを持って20m歩く→反対。",
+    dose:"左右 20m×3本｜姿勢が崩れる一歩手前｜RPE8",
+    rest:"休 60秒",
+    cue:"体が傾いたら重すぎ。軽くして“真っ直ぐ歩く”を優先。"
+  }
 ];
 
 const BLOCK_B = [
-  ["反応スプリント10m","10m×8本"],
-  ["500mインターバル","500m×8本"]
+  {
+    name:"B1｜10m スプリント（フォーム最優先）",
+    method:"10mだけ全力。歩いて戻る。スタートは同じ姿勢から。",
+    dose:"10m×6本｜RPE9",
+    rest:"休 60–75秒（フォームが戻るまで）",
+    cue:"腕で暴れない。足音がうるさくなったら終了（本数を減らす）。"
+  },
+  {
+    name:"B2｜30m スプリント（後半で崩れない）",
+    method:"30m全力。歩いて戻る。後半で腰が反れない。",
+    dose:"30m×4本｜RPE9",
+    rest:"休 90秒",
+    cue:"フォームが崩れるなら“20m×4”に変更してOK。"
+  },
+  {
+    name:"B3｜500m インターバル（心拍の回復を見る）",
+    method:"500mを一定ペースで。直後→1分後の心拍をメモ。",
+    dose:"500m×6本｜RPE8-9（息は上がるが止めない）",
+    rest:"休 60–90秒",
+    cue:"最初の2本で飛ばしすぎ禁止。6本目が同じペースで走れる設定。"
+  }
 ];
 
-const LIB_BASE = [
-  "スプリットスタンス・ブレス",
-  "クワドラペッド・リーチ",
-  "シャフトOHリフト",
-  "プライオ・リズムスロー",
-  "チューブ回旋プレス",
-  "スプリットSQ",
-  "デッドバグ",
-  "バードドッグ",
-  "プランク",
-  "キャリー"
-];
+/* ========= 補強10種（一覧） ========= */
+const LIB = {
+  base10: [
+    "チューブ外旋（肘90°・脇タオル）",
+    "チューブ内旋（肘90°・脇タオル）",
+    "チューブロー（肩甲骨を下げて引く）",
+    "チューブプレス（腰反り禁止）",
+    "壁プッシュ（肩甲骨だけ前へ）",
+    "ハンマー回内回外（肘固定）",
+    "リストカール（掌側）",
+    "リバースリストカール（甲側）",
+    "輪ゴム指開き",
+    "スーツケースキャリー（片手持ち歩行）"
+  ],
+  gym10: [
+    "DBルーマニアンDL（8回×3｜RPE8）",
+    "ゴブレットSQ（8回×3｜RPE8）",
+    "DBスプリットSQ（8回×3｜RPE8-9）",
+    "ワンハンドロウ（10回×3｜RPE8）",
+    "ラットプル（10回×3｜RPE8）",
+    "DBフロアプレス（10回×3｜RPE8）",
+    "インクラインDBプレス（8回×3｜RPE8）",
+    "DBリアデルト（12回×2｜RPE7）",
+    "DBスーツケースキャリー（20m×3）",
+    "ケーブル外旋（軽｜12回×2）"
+  ],
+  shoulder10: [
+    "チューブ外旋（肘90°・脇タオル）",
+    "チューブ内旋（肘90°・脇タオル）",
+    "チューブY（軽く上へ・すくめない）",
+    "チューブW（肘を体側で引く）",
+    "壁プッシュ（肩甲骨だけ前へ）",
+    "サイドレイズ（軽｜15回×2）",
+    "リアデルト（軽｜15回×2）",
+    "チューブロー（肩甲骨を下げる）",
+    "チューブプレス（腰反り禁止）",
+    "うつ伏せT（軽｜12回×2）"
+  ],
+  elbow10: [
+    "ハンマー回内回外（肘固定）",
+    "リストカール（掌側）",
+    "リバースリストカール（甲側）",
+    "尺屈/橈屈（手首を横に倒す）",
+    "タオル絞り（左右）",
+    "ハンドグリップ（握る｜15回×2）",
+    "指伸展（輪ゴム｜20回×2）",
+    "肘曲げ伸ばし（軽チューブ｜15回×2）",
+    "前腕回内保持（10秒×5）",
+    "前腕回外保持（10秒×5）"
+  ],
+  hand10: [
+    "輪ゴム指開き（20回×2）",
+    "指先つまみ（硬貨/クリップ）",
+    "握る→開く（グーパー100回）",
+    "タオル握り（10秒×5）",
+    "小指側つまみ（意識）",
+    "指一本タップ（各指30回）",
+    "前腕回内回外（軽負荷）",
+    "手首ぐるぐる（各30回）",
+    "指の屈曲伸展（ゆっくり）",
+    "ボール握り（軽く30秒×3）"
+  ],
+  back10: [
+    "ヒップヒンジ（RDL動作）",
+    "グッドモーニング（軽負荷）",
+    "バックエクステンション（自重）",
+    "バードドッグ（左右10回×2）",
+    "デッドバグ（左右10回×2）",
+    "ヒップリフト（15回×2）",
+    "チューブロー（12回×3）",
+    "フェイスプル（15回×2）",
+    "プランク（30秒×3）",
+    "スーツケースキャリー（20m×3）"
+  ],
+  core10: [
+    "プランク（30秒×3）",
+    "サイドプランク（20秒×3）",
+    "デッドバグ（左右10回×2）",
+    "バードドッグ（左右10回×2）",
+    "ヒップリフト（15回×2）",
+    "ハーフニーリング保持（20秒×3）",
+    "キャリー（20m×3）",
+    "クランチ（15回×2）",
+    "レッグレイズ（10回×2）",
+    "ロシアンツイスト（軽｜20回）"
+  ],
+  hip10: [
+    "スプリットスクワット（8回×3）",
+    "片脚RDL（8回×2）",
+    "サイドランジ（10回×2）",
+    "モンスターウォーク（10m×3）",
+    "クラムシェル（15回×2）",
+    "ヒップリフト（15回×2）",
+    "ステップアップ（10回×2）",
+    "ヒップヒンジ（10回×3）",
+    "シングルレッグスクワット（軽）",
+    "片脚立ち保持（30秒×2）"
+  ],
+  ankle10: [
+    "カーフレイズ（15回×2）",
+    "チューブ底屈（15回×2）",
+    "チューブ背屈（15回×2）",
+    "チューブ内返し（15回×2）",
+    "チューブ外返し（15回×2）",
+    "つま先歩き（20m×2）",
+    "かかと歩き（20m×2）",
+    "片脚バランス（30秒×2）",
+    "つま先ジャンプ（小さく20回）",
+    "足指グーパー（50回）"
+  ],
+  lower10: [
+    "スプリットスクワット（8回×3）",
+    "ヒップヒンジ（10回×3）",
+    "スクワット（10回×3）",
+    "ランジ（10回×2）",
+    "サイドランジ（10回×2）",
+    "ステップアップ（10回×2）",
+    "カーフレイズ（15回×2）",
+    "片脚立ち（30秒×2）",
+    "もも上げ（20秒×3）",
+    "スキップ（20m×3）"
+  ],
+  vo2max10: [
+    "200mインターバル×10（Rest 45–60秒）",
+    "300mインターバル×8（Rest 60秒）",
+    "400mインターバル×6（Rest 60–90秒）",
+    "500mインターバル×6（Rest 60–90秒）",
+    "1分走→1分歩×10",
+    "20秒走→40秒歩×15",
+    "階段1分→休1分×10",
+    "テンポ走12分（一定ペース）",
+    "30分ジョグ（会話できる）",
+    "100m流し×10（Rest 30秒）"
+  ],
+  sprint10: [
+    "10m×6（休60–75秒）",
+    "20m×6（休75–90秒）",
+    "30m×4（休90秒）",
+    "10m＋10m（切返しなし・直線）×6",
+    "坂ダッシュ10m×6",
+    "スタート姿勢固定（同じ）×8",
+    "スキップ20m×3",
+    "もも上げ20m×3",
+    "バウンディング20m×3",
+    "流し60m×6（7割）"
+  ],
+  plyo10: [
+    "その場ジャンプ（小さく20回）",
+    "スクワットジャンプ（8回×3）",
+    "片脚ホップ（各10回×2）",
+    "横ホップ（各10回×2）",
+    "ドロップ着地（低い台｜5回×3）",
+    "連続バウンス（15秒×3）",
+    "ミニハードル（10台×3）",
+    "スケータージャンプ（10回×2）",
+    "ジャンプロープ（30秒×5）",
+    "着地静止（5秒保持×8）"
+  ],
+  balance10: [
+    "片脚立ち（30秒×2）",
+    "目閉じ片脚立ち（15秒×2）",
+    "片脚で前後タッチ（10回×2）",
+    "片脚で左右タッチ（10回×2）",
+    "タンデム歩行（10m×2）",
+    "ライン上歩行（10m×2）",
+    "スーツケースキャリー（軽く真っ直ぐ）",
+    "片脚スクワット（浅く10回×2）",
+    "片脚カーフレイズ（10回×2）",
+    "バランスボード（60秒×2）"
+  ]
+};
 
-const LIB_GYM = [
-  "DBルーマニアンDL",
-  "ゴブレットSQ",
-  "DBスプリットSQ",
-  "ワンハンドロウ",
-  "インクラインロウ",
-  "DBフロアプレス",
-  "ハーフニーリングDBプレス",
-  "リアデルトフライ",
-  "スーツケースキャリー",
-  "DB外旋"
-];
-
+/* ========= DOM ========= */
 const listA = document.getElementById("listA");
 const listB = document.getElementById("listB");
-const libBase = document.getElementById("libBase");
-const libGym = document.getElementById("libGym");
+const sessionKeyEl = document.getElementById("sessionKey");
+const saveHint = document.getElementById("saveHint");
 
-BLOCK_A.forEach(x=>listA.innerHTML+=`<li><b>${x[0]}</b><div class="mini">${x[1]}</div></li>`);
-BLOCK_B.forEach(x=>listB.innerHTML+=`<li><b>${x[0]}</b><div class="mini">${x[1]}</div></li>`);
-LIB_BASE.forEach(x=>libBase.innerHTML+=`<li>${x}</li>`);
-LIB_GYM.forEach(x=>libGym.innerHTML+=`<li>${x}</li>`);
+const chkDone = document.getElementById("chkDone");
+const inpRPE = document.getElementById("inpRPE");
+const inpHR = document.getElementById("inpHR");
+const txtNote = document.getElementById("txtNote");
+const whoSelect = document.getElementById("whoSelect");
 
-const chkDone=document.getElementById("chkDone");
-const inpRPE=document.getElementById("inpRPE");
-const inpHR=document.getElementById("inpHR");
-const txtNote=document.getElementById("txtNote");
-const whoSelect=document.getElementById("whoSelect");
-const saveHint=document.getElementById("saveHint");
+sessionKeyEl.textContent = "Vol.01";
 
-function load(){
-  const d=JSON.parse(localStorage.getItem(STORAGE_KEY(whoSelect.value))||"{}");
-  chkDone.checked=!!d.done;
-  inpRPE.value=d.rpe||"";
-  inpHR.value=d.hr||"";
-  txtNote.value=d.note||"";
-  saveHint.textContent=d.ts?new Date(d.ts).toLocaleString():"—";
+/* ========= render ========= */
+function renderMenu(){
+  listA.innerHTML = BLOCK_A.map(it=>{
+    return `<li><div class="itemBox">
+      <div class="name">${esc(it.name)}</div>
+      <div class="meta">やり方：${esc(it.method)}</div>
+      <div class="meta">強度：${esc(it.dose)} ／ 休息：${esc(it.rest)}</div>
+      <div class="cue"><b>注意：</b>${esc(it.cue)}</div>
+    </div></li>`;
+  }).join("");
+
+  listB.innerHTML = BLOCK_B.map(it=>{
+    return `<li><div class="itemBox">
+      <div class="name">${esc(it.name)}</div>
+      <div class="meta">やり方：${esc(it.method)}</div>
+      <div class="meta">強度：${esc(it.dose)} ／ 休息：${esc(it.rest)}</div>
+      <div class="cue"><b>注意：</b>${esc(it.cue)}</div>
+    </div></li>`;
+  }).join("");
 }
-function save(){
-  localStorage.setItem(
-    STORAGE_KEY(whoSelect.value),
-    JSON.stringify({done:chkDone.checked,rpe:inpRPE.value,hr:inpHR.value,note:txtNote.value,ts:Date.now()})
-  );
-  load();
-}
-document.getElementById("btnSave").onclick=save;
-document.getElementById("btnReset").onclick=()=>{localStorage.clear();load()};
-whoSelect.onchange=load;
-load();
 
-if("serviceWorker"in navigator){
-  navigator.serviceWorker.register("service-worker.js");
+function fillList(id, arr){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.innerHTML = arr.map(x=>`<li>${esc(x)}</li>`).join("");
 }
+
+function renderLib(){
+  fillList("libBase", LIB.base10);
+  fillList("libGym", LIB.gym10);
+  fillList("libShoulder", LIB.shoulder10);
+  fillList("libElbow", LIB.elbow10);
+  fillList("libHand", LIB.hand10);
+  fillList("libBack", LIB.back10);
+  fillList("libCore", LIB.core10);
+  fillList("libHip", LIB.hip10);
+  fillList("libAnkle", LIB.ankle10);
+  fillList("libLower", LIB.lower10);
+  fillList("libVO2", LIB.vo2max10);
+  fillList("libSprint", LIB.sprint10);
+  fillList("libPlyo", LIB.plyo10);
+  fillList("libBalance", LIB.balance10);
+
+  fillList("libBaseModal", LIB.base10);
+  fillList("libGymModal", LIB.gym10);
+  fillList("libShoulderModal", LIB.shoulder10);
+  fillList("libElbowModal", LIB.elbow10);
+  fillList("libHandModal", LIB.hand10);
+  fillList("libBackModal", LIB.back10);
+  fillList("libCoreModal", LIB.core10);
+  fillList("libHipModal", LIB.hip10);
+  fillList("libAnkleModal", LIB.ankle10);
+  fillList("libLowerModal", LIB.lower10);
+  fillList("libVO2Modal", LIB.vo2max10);
+  fillList("libSprintModal", LIB.sprint10);
+  fillList("libPlyoModal", LIB.plyo10);
+  fillList("libBalanceModal", LIB.balance10);
+}
+
+/* ========= storage ========= */
+function storageKey(){
+  return `${STORAGE_PREFIX}${whoSelect.value}`;
+}
+function loadProgress(){
+  const raw = localStorage.getItem(storageKey());
+  if(!raw){
+    chkDone.checked = false;
+    inpRPE.value = "";
+    inpHR.value = "";
+    txtNote.value = "";
+    saveHint.textContent = "—";
+    return;
+  }
+  try{
+    const obj = JSON.parse(raw);
+    chkDone.checked = !!obj.done;
+    inpRPE.value = obj.rpe || "";
+    inpHR.value = obj.hr || "";
+    txtNote.value = obj.note || "";
+    saveHint.textContent = obj.ts ? `最終保存：${new Date(obj.ts).toLocaleString()}` : "—";
+  }catch(e){
+    chkDone.checked = false;
+    inpRPE.value = "";
+    inpHR.value = "";
+    txtNote.value = "";
+    saveHint.textContent = "—";
+  }
+}
+function saveProgress(){
+  const obj = {
+    done: chkDone.checked,
+    rpe: (inpRPE.value || "").trim(),
+    hr: (inpHR.value || "").trim(),
+    note: (txtNote.value || "").trim(),
+    ts: Date.now()
+  };
+  localStorage.setItem(storageKey(), JSON.stringify(obj));
+  saveHint.textContent = `保存：${new Date(obj.ts).toLocaleString()}`;
+  flash("保存しました");
+}
+function resetVol(){
+  const keys = [];
+  for(let i=0;i<localStorage.length;i++){
+    const k = localStorage.key(i);
+    if(k && k.startsWith(STORAGE_PREFIX)) keys.push(k);
+  }
+  keys.forEach(k=>localStorage.removeItem(k));
+  loadProgress();
+  flash("Vol.01（端末内）をリセットしました");
+}
+
+/* ========= events ========= */
+whoSelect.addEventListener("change", loadProgress);
+chkDone.addEventListener("change", saveProgress);
+inpRPE.addEventListener("change", saveProgress);
+inpHR.addEventListener("change", saveProgress);
+document.getElementById("btnSave").addEventListener("click", saveProgress);
+document.getElementById("btnReset").addEventListener("click", resetVol);
+
+/* modal */
+const modalLibrary = document.getElementById("modalLibrary");
+document.getElementById("btnOpenLibrary").addEventListener("click", ()=>{ modalLibrary.style.display="block"; });
+document.getElementById("btnCloseLibrary").addEventListener("click", ()=>{ modalLibrary.style.display="none"; });
+window.addEventListener("click",(e)=>{ if(e.target===modalLibrary) modalLibrary.style.display="none"; });
+
+/* utils */
+function esc(s){
+  return String(s ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+function flash(msg){
+  const d = document.createElement("div");
+  d.textContent = msg;
+  d.style.position="fixed";
+  d.style.left="50%";
+  d.style.bottom="18px";
+  d.style.transform="translateX(-50%)";
+  d.style.background="rgba(255,255,255,0.96)";
+  d.style.border="1px solid rgba(14,165,233,0.35)";
+  d.style.color="#0c4a6e";
+  d.style.padding="10px 12px";
+  d.style.borderRadius="12px";
+  d.style.zIndex="9999";
+  d.style.fontSize=".92rem";
+  document.body.appendChild(d);
+  setTimeout(()=>{ d.remove(); }, 1100);
+}
+
+/* boot */
+(function boot(){
+  renderMenu();
+  renderLib();
+  loadProgress();
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js");
+    });
+  }
+})();
 </script>
 </body>
 </html>
