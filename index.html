@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>FKK投手｜1月メニュー（Week1-2）｜共通メニュー</title>
+<title>FKK投手｜トレーニングメニュー｜Vol.01</title>
 <meta name="theme-color" content="#ffffff">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
@@ -19,8 +19,6 @@
   --muted:#6b7280;
   --accent:#0ea5e9;
   --accentSoft:rgba(14,165,233,0.10);
-  --ok:#16a34a;
-  --warn:#f59e0b;
   font-family:"Noto Sans JP",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
@@ -44,7 +42,6 @@ header{
 h1{
   margin:0 0 6px;
   font-size:1.25rem;
-  letter-spacing:.01em;
 }
 .sub{
   margin:0;
@@ -55,23 +52,17 @@ h1{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-  align-items:center;
   margin-top:12px;
 }
 .pill{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
   padding:7px 10px;
   border-radius:999px;
   border:1px solid var(--line);
   background:#fff;
-  color:#0f172a;
   font-size:.88rem;
 }
-.pill b{color:#111827}
 .card{
-  background:var(--card);
+  background:#fff;
   border:1px solid var(--line);
   border-radius:14px;
   padding:14px;
@@ -84,30 +75,18 @@ h1{
 .mini{
   color:var(--muted);
   font-size:.9rem;
-  margin:6px 0 0;
-}
-.hr{
-  border:0;
-  border-top:1px solid var(--line);
-  margin:12px 0;
 }
 .btnRow{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-  align-items:center;
   margin-top:10px;
 }
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
   border-radius:12px;
   padding:10px 12px;
   border:1px solid var(--line);
   background:#fff;
-  color:#111827;
   cursor:pointer;
   font-size:.95rem;
   text-decoration:none;
@@ -117,17 +96,27 @@ h1{
   background:rgba(14,165,233,0.10);
   color:#0c4a6e;
 }
-.btn:active{transform:translateY(1px)}
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:4px 8px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:#fff;
-  color:var(--muted);
-  font-size:.82rem;
+.ol{
+  margin:10px 0 0;
+  padding-left:20px;
+}
+.ol li{
+  margin:6px 0;
+}
+.sepHint{
+  background:rgba(14,165,233,0.08);
+  border:1px solid rgba(14,165,233,0.18);
+  padding:10px 12px;
+  border-radius:12px;
+  color:#0c4a6e;
+  margin-bottom:10px;
+}
+.warnHint{
+  background:rgba(245,158,11,0.10);
+  border:1px solid rgba(245,158,11,0.22);
+  padding:10px 12px;
+  border-radius:12px;
+  color:#7c2d12;
 }
 .grid2{
   display:grid;
@@ -137,34 +126,6 @@ h1{
 @media (max-width:860px){
   .grid2{grid-template-columns:1fr}
 }
-.big{
-  font-size:1.05rem;
-}
-.blockTitle{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:6px;
-}
-.ol{
-  margin:10px 0 0;
-  padding-left:20px;
-}
-.ol li{
-  margin:6px 0;
-}
-.kv{
-  display:grid;
-  grid-template-columns:140px 1fr;
-  gap:8px;
-  margin-top:10px;
-}
-@media (max-width:520px){
-  .kv{grid-template-columns:1fr}
-}
-.kv .k{color:var(--muted)}
 input[type="checkbox"]{
   width:18px;height:18px;
   accent-color:var(--accent);
@@ -173,420 +134,177 @@ input[type="text"], textarea, select{
   width:100%;
   border:1px solid var(--line);
   border-radius:12px;
-  padding:10px 10px;
-  font-size:1rem;
-  outline:none;
-  background:#fff;
-  color:#111827;
+  padding:10px;
 }
-textarea{min-height:110px; resize:vertical}
-.sepHint{
-  background:rgba(14,165,233,0.08);
-  border:1px solid rgba(14,165,233,0.18);
-  padding:10px 12px;
-  border-radius:12px;
-  color:#0c4a6e;
-}
-.warnHint{
-  background:rgba(245,158,11,0.10);
-  border:1px solid rgba(245,158,11,0.22);
-  padding:10px 12px;
-  border-radius:12px;
-  color:#7c2d12;
-}
-.footer{
-  margin-top:16px;
-  color:var(--muted);
-  font-size:.9rem;
-  text-align:center;
-}
+textarea{min-height:110px}
 details{
   border:1px dashed var(--line);
   border-radius:14px;
   padding:10px 12px;
-  background:#fff;
 }
-details + details{margin-top:10px}
+details+details{margin-top:10px}
 summary{
   cursor:pointer;
-  list-style:none;
   font-weight:600;
 }
-summary::-webkit-details-marker{display:none}
-.smallList{
-  margin:10px 0 0;
-  padding-left:18px;
-  color:#111827;
-}
-.smallList li{
-  margin:6px 0;
-}
-.stickyTop{
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:rgba(255,255,255,0.92);
-  backdrop-filter: blur(8px);
-  border-bottom:1px solid var(--line);
-  padding:10px 14px;
-  margin:-16px -14px 12px;
+.footer{
+  margin-top:16px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.9rem;
 }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <h1>FKK投手｜1月メニュー（Week1-2）｜共通メニュー</h1>
-    <p class="sub">目的：雪シーズンでも「呼吸×順序×流れ」を崩さず、2月の立ち投げ期へ繋げる。全員同一メニュー。</p>
+    <h1>FKK投手｜トレーニングメニュー｜Vol.01</h1>
+    <p class="sub">雪シーズンでも「呼吸 × 順序 × 流れ」を崩さず、立ち投げ期へ繋げる。全員共通。</p>
 <div class="btnRow">
-  <a class="btn primary" href="https://adjustment-commits.github.io/pitcher-training-2025/" target="_blank" rel="noopener">▶ 2025参照</a>
-  <button class="btn" id="btnOpenLibrary">種目ライブラリ（見たい人用）</button>
-  <button class="btn" id="btnReset">進捗リセット（端末内）</button>
+  <a class="btn primary" href="https://adjustment-commits.github.io/pitcher-training-2025/" target="_blank">▶ 2025参照</a>
+  <button class="btn" id="btnOpenLibrary">種目ライブラリ</button>
+  <button class="btn" id="btnReset">進捗リセット</button>
 </div>
 
 <div class="row">
-  <span class="pill"><b>週2回</b>（同一メニュー反復）</span>
-  <span class="pill"><b>Week1-2</b>（同構成で精度UP）</span>
-  <span class="pill"><b>RPE</b> 8〜9（形が崩れたら即調整）</span>
-  <span class="pill"><b>ブロック分離</b>：エクササイズ → ランニング</span>
-</div>  </div>
+  <span class="pill">Vol.01</span>
+  <span class="pill">週2回（同一メニュー反復）</span>
+  <span class="pill">RPE 8–9</span>
+</div>
+  </div>
 </header>
 <div class="wrap">
-  <div class="stickyTop">
-    <div class="blockTitle">
-      <div>
-        <b class="big">今日やること（迷わない）</b>
-        <div class="mini">① エクササイズ（同一場所） → ② ランニング（場所移動）</div>
-      </div>
-      <span class="badge" id="sessionKey">Week1</span>
-    </div>
-  </div>
-  <section class="card">
-    <div class="blockTitle">
-      <h2>Week選択</h2>
-      <span class="badge">Week1-2 同構成</span>
-    </div>
-<div class="btnRow" style="margin-top:6px">
-  <button class="btn primary tab active" data-week="1">Week1</button>
-  <button class="btn tab" data-week="2">Week2</button>
-</div>
-
-<div class="hr"></div>
-
-<div class="grid2">
-  <div>
-    <label class="pill" style="cursor:pointer">
-      <input type="checkbox" id="chkDone">
-      <b>今週（このメニュー）実施済みにする</b>
+<section class="card">
+  <div class="grid2">
+    <label class="pill">
+      <input type="checkbox" id="chkDone"> 実施済み
     </label>
-    <div class="mini">「やった／やってない」だけ記録。細かい管理は不要。</div>
+<select id="whoSelect">
+  <option value="all">全体（共通）</option>
+  <option value="p1">P1</option>
+  <option value="p2">P2</option>
+  <option value="p3">P3</option>
+  <option value="p4">P4</option>
+  <option value="new">新人</option>
+</select>
   </div>
-  <div>
-    <select id="whoSelect" aria-label="記録者">
-      <option value="all">記録：全体（共通）</option>
-      <option value="p1">記録：P1</option>
-      <option value="p2">記録：P2</option>
-      <option value="p3">記録：P3</option>
-      <option value="p4">記録：P4</option>
-      <option value="new">記録：新人</option>
-    </select>
-    <div class="mini">グループでも端末1つで運用できるように「記録者」を切替可能。</div>
+    <div class="grid2" style="margin-top:10px">
+    <input type="text" id="inpRPE" placeholder="RPE（例：8.5）">
+    <input type="text" id="inpHR" placeholder="心拍（例：直後165 / 1分後120）">
   </div>
-</div>
-
-<div class="kv">
-  <div class="k">当日のRPE</div>
-  <div class="v"><input type="text" id="inpRPE" placeholder="例：8.5"></div>
-  <div class="k">心拍メモ</div>
-  <div class="v"><input type="text" id="inpHR" placeholder="例：直後165 / 1分後120"></div>
-  <div class="k">メモ</div>
-  <div class="v"><textarea id="txtNote" placeholder="例：崩れた局面、左右差、痛み、投げの感覚 など"></textarea></div>
-</div>
-
-<div class="btnRow">
-  <button class="btn primary" id="btnSave">保存</button>
-  <span class="badge" id="saveHint">—</span>
-</div>
-
-<div class="warnHint" style="margin-top:10px">
-  ルール：痛みは即中断。形が崩れたら「負荷/速度/回数」を下げて続行（気合いで押さない）。
-</div>  
-  </section>
-  <section class="card" id="blockA">
-    <div class="blockTitle">
-      <h2>Block A｜エクササイズ（同一場所）</h2>
-      <span class="badge">順番固定</span>
-    </div>
-<div class="sepHint">
-  ここは「移動なし」。説明を増やさない。順番通りに進めて終わり。
-</div>
-
-<ol class="ol" id="listA"></ol>
-  </section>
-    <section class="card" id="blockB">
-    <div class="blockTitle">
-      <h2>Block B｜ランニング（場所移動）</h2>
-      <span class="badge">走るだけ</span>
-    </div>
-<div class="sepHint">
-  ここは「走る」。間にエクササイズを挟まない（場所の都合を優先）。
-</div>
-
-<ol class="ol" id="listB"></ol>
-
-<div class="mini" style="margin-top:10px">
-  推奨：500mは「直後→1分後」の心拍を記録。回復Δが投球の土台。
-</div>
-    </section>
-      <section class="card">
-    <div class="blockTitle">
-      <h2>補助（見たい人用）</h2>
-      <span class="badge">メインに出さない</span>
-    </div>
-<details>
-  <summary>＋ トレーニング10種目（ベース）</summary>
-  <ul class="smallList" id="libBase"></ul>
-</details>
-
-<details>
-  <summary>＋ ジム推奨10種目</summary>
-  <ul class="smallList" id="libGym"></ul>
-</details>
-
-<div class="mini" style="margin-top:10px">
-  これは「今日やるもの」ではなく、置換や追加のための母集団。
-</div>
-      </section>
-        <div class="footer">© 2025 adjustment-lab / FKK Pitcher Program (Week1-2)</div>
-</div>
-<!-- Modal: Library（ボタンから開く用） -->
-<div id="modalLibrary" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:999;padding:14px;overflow:auto">
-  <div style="max-width:860px;margin:6vh auto;background:#fff;border:1px solid rgba(0,0,0,0.18);border-radius:14px;padding:14px">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-      <h2 style="margin:0">種目ライブラリ（見たい人用）</h2>
-      <button class="btn" id="btnCloseLibrary">閉じる</button>
-    </div>
-    <div class="mini" style="margin-top:6px">メイン画面には出さない。必要なときだけ見る。</div>
-    <div class="hr"></div>
-<div class="grid2">
-  <div>
-    <b>トレーニング10種目（ベース）</b>
-    <ul class="smallList" id="libBaseModal"></ul>
+  <textarea id="txtNote" placeholder="メモ（左右差・違和感・投げの感覚など）"></textarea>
+  <div class="btnRow">
+    <button class="btn primary" id="btnSave">保存</button>
+    <span id="saveHint" class="mini">—</span>
   </div>
-  <div>
-    <b>ジム推奨10種目</b>
-    <ul class="smallList" id="libGymModal"></ul>
-  </div>
-</div>
-  </div>
+  <div class="warnHint">痛みは即中断。形が崩れたら負荷・回数を下げて継続。</div>
+</section>
+<section class="card">
+  <h2>Block A｜エクササイズ</h2>
+  <div class="sepHint">移動なし。順番固定。</div>
+  <ol class="ol" id="listA"></ol>
+</section>
+<section class="card">
+  <h2>Block B｜ランニング</h2>
+  <div class="sepHint">走るだけ。間に他種目を挟まない。</div>
+  <ol class="ol" id="listB"></ol>
+</section>
+<section class="card">
+  <h2>補助（見たい人用）</h2>
+  <details>
+    <summary>＋ ベース10種目</summary>
+    <ul id="libBase"></ul>
+  </details>
+  <details>
+    <summary>＋ ジム推奨10種目</summary>
+    <ul id="libGym"></ul>
+  </details>
+</section>
+<div class="footer">© adjustment-lab / FKK Pitcher Program Vol.01</div>
 </div>
 <script>
-const PROGRAM = {
-  weeks:{
-    1:{ title:"Week1｜基準作り（呼吸を止めずに動き続ける）" },
-    2:{ title:"Week2｜同構成で精度UP（疲労下でも順序を崩さない）" }
-  },
-  blockA:[
-    { id:"A1", name:"スプリットスタンス・ブレス", load:"各脚30秒×3set（RPE6→8）", cue:"前脚に垂直荷重。吐いて腹圧、吸って積み上げ。腰反り禁止。" },
-    { id:"A2", name:"クワドラペッド・リーチ（呼吸付き）", load:"左右10回×3set（RPE7）", cue:"呼気でリーチ、吸気で戻す。肋骨開きっぱなし禁止。" },
-    { id:"A3", name:"シャフト・オーバーヘッドリフト（呼吸付き）", load:"6回×3set（RPE7）", cue:"肩で上げない。吸気で上、吐気で骨盤安定して下ろす。" },
-    { id:"A4", name:"プライオ・リズムスロー（ネット）", load:"6回×4set（RPE8）", cue:"強投禁止。毎回同じ順序（骨盤→胸郭→腕）。吐いて抜ける。" },
-    { id:"A5", name:"KB/DBスプリットスクワット（呼吸同期）", load:"各脚8回×3set（RPE8-9）", cue:"吐いて立つ／吸って降りる。膝が内に潰れたら負荷↓。" },
-    { id:"A6", name:"デッドバグ（呼吸同期）", load:"左右8回×2set（RPE7）", cue:"呼気で肋骨が閉じる。腰反り禁止。雑なら回数を減らす。" }
-  ],
-  blockB:[
-    { id:"B1", name:"反応スプリント 10m", load:"10m×8本（休45-60秒）RPE8-9", cue:"腕で飛び出さない。1歩目で吐けることを最優先。" },
-    { id:"B2", name:"500mインターバル（500m通路）", load:"500m×8本（Rest 60-90秒）RPE8-9", cue:"呼吸停止しない速度で。直後→1分後心拍を記録。" }
-  ]
-};
+const STORAGE_KEY = who => `FKK_PITCH_VOL01::${who}`;
 
-const LIB_BASE_10 = [
+const BLOCK_A = [
+  ["スプリットスタンス・ブレス","各脚30秒×3｜吐いて腹圧"],
+  ["クワドラペッド・リーチ","左右10回×3"],
+  ["シャフトOHリフト","6回×3"],
+  ["プライオ・リズムスロー","6回×4"],
+  ["DB/KBスプリットSQ","各脚8回×3"],
+  ["デッドバグ","左右8回×2"]
+];
+
+const BLOCK_B = [
+  ["反応スプリント10m","10m×8本"],
+  ["500mインターバル","500m×8本"]
+];
+
+const LIB_BASE = [
   "スプリットスタンス・ブレス",
-  "クワドラペッド・リーチ（呼吸付き）",
-  "シャフト・オーバーヘッドリフト（呼吸付き）",
-  "プライオ・リズムスロー（ネット）",
-  "チューブ回旋プレス（スプリット）",
-  "KB/DBスプリットスクワット（呼吸同期）",
-  "デッドバグ（呼吸同期）",
-  "バードドッグ（呼気で伸ばす）",
-  "プランク（短時間・呼吸停止禁止）",
-  "キャリー（DB/KB：歩行できる範囲）"
+  "クワドラペッド・リーチ",
+  "シャフトOHリフト",
+  "プライオ・リズムスロー",
+  "チューブ回旋プレス",
+  "スプリットSQ",
+  "デッドバグ",
+  "バードドッグ",
+  "プランク",
+  "キャリー"
 ];
 
-const LIB_GYM_10 = [
-  "DBルーマニアンDL（6–8回×3：RPE7-8）",
-  "ゴブレットSQ（DB/KB：6–8回×3：RPE7-8）",
-  "DBスプリットSQ（8回×3：RPE7-8）",
-  "ワンハンドロウ（8–10回×3：RPE7-8）",
-  "インクラインロウ（8–12回×3：RPE7-8）",
-  "DBフロアプレス（8–10回×3：RPE7-8）",
-  "ハーフニーリングDBプレス（8回×3：RPE7-8）",
-  "DBリアデルトフライ（10–12回×2：RPE6-7）",
-  "DBスーツケースキャリー（20–30m×3）",
-  "DB外旋（軽：12回×2：RPE5-6）"
+const LIB_GYM = [
+  "DBルーマニアンDL",
+  "ゴブレットSQ",
+  "DBスプリットSQ",
+  "ワンハンドロウ",
+  "インクラインロウ",
+  "DBフロアプレス",
+  "ハーフニーリングDBプレス",
+  "リアデルトフライ",
+  "スーツケースキャリー",
+  "DB外旋"
 ];
 
-/* ====== DOM ====== */
 const listA = document.getElementById("listA");
 const listB = document.getElementById("listB");
-const sessionKeyEl = document.getElementById("sessionKey");
-const saveHint = document.getElementById("saveHint");
+const libBase = document.getElementById("libBase");
+const libGym = document.getElementById("libGym");
 
-const chkDone = document.getElementById("chkDone");
-const inpRPE = document.getElementById("inpRPE");
-const inpHR = document.getElementById("inpHR");
-const txtNote = document.getElementById("txtNote");
-const whoSelect = document.getElementById("whoSelect");
+BLOCK_A.forEach(x=>listA.innerHTML+=`<li><b>${x[0]}</b><div class="mini">${x[1]}</div></li>`);
+BLOCK_B.forEach(x=>listB.innerHTML+=`<li><b>${x[0]}</b><div class="mini">${x[1]}</div></li>`);
+LIB_BASE.forEach(x=>libBase.innerHTML+=`<li>${x}</li>`);
+LIB_GYM.forEach(x=>libGym.innerHTML+=`<li>${x}</li>`);
 
-let state = {
-  week: 1,
-  who: "all"
-};
+const chkDone=document.getElementById("chkDone");
+const inpRPE=document.getElementById("inpRPE");
+const inpHR=document.getElementById("inpHR");
+const txtNote=document.getElementById("txtNote");
+const whoSelect=document.getElementById("whoSelect");
+const saveHint=document.getElementById("saveHint");
 
-/* ====== render ====== */
-function render(){
-  const w = PROGRAM.weeks[state.week];
-  sessionKeyEl.textContent = `Week${state.week}`;
-
-  listA.innerHTML = PROGRAM.blockA.map(it=>{
-    return `<li><b>${esc(it.name)}</b><div class="mini">${esc(it.load)}<br>${esc(it.cue)}</div></li>`;
-  }).join("");
-
-  listB.innerHTML = PROGRAM.blockB.map(it=>{
-    return `<li><b>${esc(it.name)}</b><div class="mini">${esc(it.load)}<br>${esc(it.cue)}</div></li>`;
-  }).join("");
-
-  fillLib("libBase", LIB_BASE_10);
-  fillLib("libGym", LIB_GYM_10);
-  fillLib("libBaseModal", LIB_BASE_10);
-  fillLib("libGymModal", LIB_GYM_10);
-
-  loadProgress();
+function load(){
+  const d=JSON.parse(localStorage.getItem(STORAGE_KEY(whoSelect.value))||"{}");
+  chkDone.checked=!!d.done;
+  inpRPE.value=d.rpe||"";
+  inpHR.value=d.hr||"";
+  txtNote.value=d.note||"";
+  saveHint.textContent=d.ts?new Date(d.ts).toLocaleString():"—";
 }
-
-function fillLib(id, arr){
-  const el = document.getElementById(id);
-  el.innerHTML = arr.map(x=>`<li>${esc(x)}</li>`).join("");
+function save(){
+  localStorage.setItem(
+    STORAGE_KEY(whoSelect.value),
+    JSON.stringify({done:chkDone.checked,rpe:inpRPE.value,hr:inpHR.value,note:txtNote.value,ts:Date.now()})
+  );
+  load();
 }
+document.getElementById("btnSave").onclick=save;
+document.getElementById("btnReset").onclick=()=>{localStorage.clear();load()};
+whoSelect.onchange=load;
+load();
 
-/* ====== storage ====== */
-function storageKey(){
-  return `FKK_PITCH_W12_COMMON::${state.who}::W${state.week}`;
-}
-function loadProgress(){
-  const raw = localStorage.getItem(storageKey());
-  if(!raw){
-    chkDone.checked = false;
-    inpRPE.value = "";
-    inpHR.value = "";
-    txtNote.value = "";
-    saveHint.textContent = "—";
-    return;
-  }
-  try{
-    const obj = JSON.parse(raw);
-    chkDone.checked = !!obj.done;
-    inpRPE.value = obj.rpe || "";
-    inpHR.value = obj.hr || "";
-    txtNote.value = obj.note || "";
-    saveHint.textContent = obj.ts ? `最終保存：${new Date(obj.ts).toLocaleString()}` : "—";
-  }catch(e){
-    chkDone.checked = false;
-    inpRPE.value = "";
-    inpHR.value = "";
-    txtNote.value = "";
-    saveHint.textContent = "—";
-  }
-}
-function saveProgress(){
-  const obj = {
-    done: chkDone.checked,
-    rpe: (inpRPE.value || "").trim(),
-    hr: (inpHR.value || "").trim(),
-    note: (txtNote.value || "").trim(),
-    ts: Date.now()
-  };
-  localStorage.setItem(storageKey(), JSON.stringify(obj));
-  saveHint.textContent = `保存：${new Date(obj.ts).toLocaleString()}`;
-  flash("保存しました");
-}
-function resetAll(){
-  const prefix = "FKK_PITCH_W12_COMMON::";
-  const keys = [];
-  for(let i=0;i<localStorage.length;i++){
-    const k = localStorage.key(i);
-    if(k && k.startsWith(prefix)) keys.push(k);
-  }
-  keys.forEach(k=>localStorage.removeItem(k));
-  loadProgress();
-  flash("端末内の進捗をリセットしました");
-}
-
-/* ====== events ====== */
-document.querySelectorAll(".tab[data-week]").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    document.querySelectorAll(".tab[data-week]").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    state.week = parseInt(btn.getAttribute("data-week"),10);
-    render();
-  });
-});
-
-whoSelect.addEventListener("change", ()=>{
-  state.who = whoSelect.value;
-  loadProgress();
-});
-
-chkDone.addEventListener("change", saveProgress);
-inpRPE.addEventListener("change", saveProgress);
-inpHR.addEventListener("change", saveProgress);
-document.getElementById("btnSave").addEventListener("click", saveProgress);
-
-document.getElementById("btnReset").addEventListener("click", resetAll);
-
-/* modal */
-const modalLibrary = document.getElementById("modalLibrary");
-document.getElementById("btnOpenLibrary").addEventListener("click", ()=>{ modalLibrary.style.display="block"; });
-document.getElementById("btnCloseLibrary").addEventListener("click", ()=>{ modalLibrary.style.display="none"; });
-window.addEventListener("click",(e)=>{ if(e.target===modalLibrary) modalLibrary.style.display="none"; });
-
-/* utils */
-function esc(s){
-  return String(s ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-function flash(msg){
-  const d = document.createElement("div");
-  d.textContent = msg;
-  d.style.position="fixed";
-  d.style.left="50%";
-  d.style.bottom="18px";
-  d.style.transform="translateX(-50%)";
-  d.style.background="rgba(255,255,255,0.96)";
-  d.style.border="1px solid rgba(14,165,233,0.35)";
-  d.style.color="#0c4a6e";
-  d.style.padding="10px 12px";
-  d.style.borderRadius="12px";
-  d.style.zIndex="9999";
-  d.style.fontSize=".92rem";
-  document.body.appendChild(d);
-  setTimeout(()=>{ d.remove(); }, 1100);
-}
-
-/* boot */
-(function boot(){
-  render();
-})();
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker.js");
-  });
+if("serviceWorker"in navigator){
+  navigator.serviceWorker.register("service-worker.js");
 }
 </script>
 </body>
-  </html>
+</html>
