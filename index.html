@@ -834,7 +834,6 @@ const chkDone = document.getElementById("chkDone");
 const inpRPE = document.getElementById("inpRPE");
 const inpHR = document.getElementById("inpHR");
 const txtNote = document.getElementById("txtNote");
-const whoSelect = document.getElementById("whoSelect");
 
 sessionKeyEl.textContent = "Vol.01";
 
@@ -899,7 +898,7 @@ function renderLib(){
 
 /* ========= storage ========= */
 function storageKey(){
-  return `${STORAGE_PREFIX}${whoSelect.value}`;
+  return `${STORAGE_PREFIX}ALL`;
 }
 function loadProgress(){
   const raw = localStorage.getItem(storageKey());
@@ -950,7 +949,7 @@ function resetVol(){
 }
 
 /* ========= events ========= */
-whoSelect.addEventListener("change", loadProgress);
+
 chkDone.addEventListener("change", saveProgress);
 inpRPE.addEventListener("change", saveProgress);
 inpHR.addEventListener("change", saveProgress);
