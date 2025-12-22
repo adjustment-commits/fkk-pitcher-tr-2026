@@ -273,6 +273,15 @@ summary::-webkit-details-marker{display:none}
 .itemBox .cue b{
   color:#0c4a6e;
 }
+summary::before{
+  content:"＋";
+  display:inline-block;
+  margin-right:8px;
+  font-weight:900;
+}
+details[open] summary::before{
+  content:"−";
+}
 </style>
 </head>
 <body>
