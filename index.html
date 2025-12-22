@@ -273,13 +273,26 @@ summary::-webkit-details-marker{display:none}
 .itemBox .cue b{
   color:#0c4a6e;
 }
-summary::before{
-  content:"＋";
-  display:inline-block;
-  margin-right:8px;
-  font-weight:900;
+.blockSummary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  list-style:none;
 }
-details[open] summary::before{
+
+.blockSummary::-webkit-details-marker{
+  display:none;
+}
+
+.blockSummary .icon::before{
+  content:"+";
+  font-size:1.4rem;
+  font-weight:600;
+  color:#374151;
+}
+
+details[open] .blockSummary .icon::before{
   content:"−";
 }
 </style>
@@ -353,7 +366,7 @@ details[open] summary::before{
 </details>
    
 <details class="card" id="blockB">
-  <summary class="blockTitle">
+  <summary class="blockSummary">
     <h2>Block B｜ランニング</h2>
   </summary>
 
@@ -366,7 +379,7 @@ details[open] summary::before{
 </details>
 
 <details class="card" id="blockC">
-  <summary class="blockTitle">
+  <summary class="blockSummary">
     <h2>Block C｜ジム推奨（10種）</h2>
   </summary>
 
