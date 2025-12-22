@@ -344,7 +344,8 @@ summary::-webkit-details-marker{display:none}
 
 <ol class="ol" id="listA"></ol>
   </section>
-    <section class="card" id="blockB">
+   
+  <section class="card" id="blockB">
     <div class="blockTitle">
       <h2>Block B｜ランニング</h2>
     </div>
@@ -361,6 +362,20 @@ summary::-webkit-details-marker{display:none}
       <span class="badge">置換・追加の候補</span>
     </div>
 
+<section class="card" id="blockC">
+  <div class="blockTitle">
+    <h2>Block C｜ジム推奨（10種）</h2>
+    <span class="badge">高強度 / 自己管理</span>
+  </div>
+
+  <div class="sepHint">
+    ジムで実施。A・Bとは別日でもOK。<br>
+    重さは<strong>RPE8〜9</strong>（最後2回が限界）。
+  </div>
+
+  <ol class="ol" id="listC"></ol>
+</section>
+      
 <details>
   <summary>＋ ベース10種</summary>
   <ul class="smallList" id="libBase"></ul>
@@ -828,6 +843,7 @@ const LIB = {
 /* ========= DOM ========= */
 const listA = document.getElementById("listA");
 const listB = document.getElementById("listB");
+const listC = document.getElementById("listC");
 const sessionKeyEl = document.getElementById("sessionKey");
 const saveHint = document.getElementById("saveHint");
 
@@ -857,6 +873,16 @@ function renderMenu(){
       <div class="cue"><b>注意：</b>${esc(it.cue)}</div>
     </div></li>`;
   }).join("");
+
+listC.innerHTML = LIB.gym10.map(x=>{
+  return `<li>
+    <div class="itemBox">
+      <div class="name">${esc(x)}</div>
+      <div class="meta">目安：8〜12回 × 3set｜RPE8–9</div>
+      <div class="cue"><b>注意：</b>フォームが崩れたら即重量を下げる</div>
+    </div>
+  </li>`;
+}).join("");
 }
 
 function fillList(id, arr){
