@@ -344,34 +344,32 @@ summary::-webkit-details-marker{display:none}
   <ol class="ol" id="listA"></ol>
 </details>
    
- <details class="card" id="blockB" open>
+<details class="card" id="blockB" open>
   <summary class="blockTitle">
+    <h2>Block B｜ランニング</h2>
+  </summary>
 
-    <div class="blockTitle">
-      <h2>Block B｜ランニング</h2>
-    </div>
+  <ol class="ol" id="listB"></ol>
 
-<ol class="ol" id="listB"></ol>
-
-<div class="mini" style="margin-top:10px">
-  推奨：500mは「直後→1分後」の心拍を記録。回復が遅い日は全体の本数を1〜2本減らしてOK。
-</div>
-    </details>
+  <div class="mini" style="margin-top:10px">
+    推奨：500mは「直後→1分後」の心拍を記録。
+    回復が遅い日は全体の本数を1〜2本減らしてOK。
+  </div>
+</details>
 
 <details class="card" id="blockC" open>
   <summary class="blockTitle">
-  <div class="blockTitle">
     <h2>Block C｜ジム推奨（10種）</h2>
     <span class="badge">正式メニュー</span>
-  </div>
+  </summary>
 
   <div class="sepHint">
-    ジム環境がある選手は3〜5種目選択して実施。    
+    ジム環境がある選手は3〜5種目選択して実施。
     重量は <strong>RPE8〜9</strong>（最後2回が限界）。
   </div>
 
   <ol class="ol" id="listC"></ol>
-    </details>
+</details>
 
     <section class="card">
     <div class="blockTitle">
@@ -885,8 +883,6 @@ function fillList(id, arr){
 }
 
 function renderLib(){
-  fillList("libBase", LIB.base10);
-  fillList("libGym", LIB.gym10);
   fillList("libShoulder", LIB.shoulder10);
   fillList("libElbow", LIB.elbow10);
   fillList("libHand", LIB.hand10);
