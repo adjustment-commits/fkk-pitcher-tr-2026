@@ -386,6 +386,14 @@ details[open] .blockSummary .icon::before{
 
 <details class="card">
   <summary class="blockSummary">
+    <span class="title">【履歴】〜2月までに実施していたランニング</span>
+    <span class="icon"></span>
+  </summary>
+  <ol class="ol" id="listBHistory"></ol>
+</details>    
+    
+<details class="card">
+  <summary class="blockSummary">
     <span class="title">Block C｜ジム推奨10種</span>
     <span class="icon"></span>
   </summary>
@@ -657,28 +665,59 @@ const BLOCK_A = [
   }
 ];
 
-const BLOCK_B = [
+const BLOCK_B_HISTORY = [
   {
-    name:"B1｜10m スプリント（フォーム）",
+    name:"【〜2月｜履歴】10m スプリント（フォーム）",
     method:"10mだけ全力。歩いて戻る。スタートは同じ姿勢から。",
     dose:"10m×6本｜RPE9",
-    rest:"休 60–75秒（フォームが戻るまで）",
-    cue:"腕で暴れない。足音がうるさくなったら終了（本数を減らす）。"
+    rest:"休 60–75秒（フォームが戻るまで）"
   },
   {
-    name:"B2｜30m スプリント（後半速度維持）",
+    name:"【〜2月｜履歴】30m スプリント（後半速度維持）",
     method:"30m全力。歩いて戻る。後半で腰が反れない。",
     dose:"30m×4本｜RPE9",
-    rest:"休 90秒",
-    cue:"フォームが崩れるなら“20m×4”に変更してOK。"
+    rest:"休 90秒"
   },
   {
-    name:"B3｜500m インターバル（心拍回復）",
+    name:"【〜2月｜履歴】500m インターバル（心拍回復）",
     method:"500mを一定ペースで。直後→1分後の心拍をメモ。",
-    dose:"500m×6本｜RPE8-9（息は上がるが止めない）",
-    rest:"休 60–90秒",
-    cue:"最初の2本で飛ばしすぎ禁止。6本目が同じペースで走れる設定。"
-  }
+    dose:"500m×6本｜RPE8–9（息は上がるが止めない）",
+    rest:"休 60–90秒"  }
+];
+
+const BLOCK_B = [
+
+{
+  name:"B1｜毎日ベース：芝 流し",
+  method:"外野芝で60m。フォームを揃えて7割。",
+  dose:"60m × 6本｜RPE6–7",
+  rest:"休 45–60秒"
+},
+{
+  name:"B2｜毎日ベース：外周500m",
+  method:"一定ペースで走る。直後と1分後の心拍を確認。",
+  dose:"500m × 3本｜RPE7",
+  rest:"休 60–90秒"
+},
+{
+  name:"B3｜登板前（軽く動かすだけ）",
+  method:"芝で流し。リズム確認のみ。",
+  dose:"60m × 4本｜RPE6",
+  rest:"休 60秒"
+},
+{
+  name:"B4｜登板翌日（回復優先）",
+  method:"外周を淡々と走る。呼吸が乱れない強度。",
+  dose:"500m × 4–6本｜RPE6–7",
+  rest:"休 60–90秒"
+},
+{
+  name:"B5｜投げない日専用（出力刺激）",
+  method:"直線60mを全力。完全回復してから次へ。",
+  dose:"60m × 4–6本｜RPE9–10（週1回まで）",
+  rest:"休 2–3分"
+}
+
 ];
 
 /* ========= 補強10種（一覧） ========= */
@@ -859,6 +898,7 @@ const listB = document.getElementById("listB");
 const listC = document.getElementById("listC");
 const sessionKeyEl = document.getElementById("sessionKey");
 const saveHint = document.getElementById("saveHint");
+const listBHistory = document.getElementById("listBHistory");
 
 const chkDone = document.getElementById("chkDone");
 const inpRPE = document.getElementById("inpRPE");
@@ -868,13 +908,23 @@ const txtNote = document.getElementById("txtNote");
 sessionKeyEl.textContent = "Vol.01";
 
 /* ========= render ========= */
+function renderHistory(){
+  if(!listBHistory) return;
+  listBHistory.innerHTML = BLOCK_B_HISTORY.map(it=>{
+    return `<li><div class="itemBox">
+      <div class="name">${esc(it.name)}</div>
+      <div class="meta">やり方：${esc(it.method)}</div>
+      <div class="meta">強度：${esc(it.dose)} ／ 休息：${esc(it.rest)}</div>
+    </div></li>`;
+  }).join("");
+}
+  
 function renderMenu(){
   listA.innerHTML = BLOCK_A.map(it=>{
     return `<li><div class="itemBox">
       <div class="name">${esc(it.name)}</div>
       <div class="meta">やり方：${esc(it.method)}</div>
       <div class="meta">強度：${esc(it.dose)} ／ 休息：${esc(it.rest)}</div>
-      <div class="cue"><b>注意：</b>${esc(it.cue)}</div>
     </div></li>`;
   }).join("");
 
@@ -883,20 +933,19 @@ function renderMenu(){
       <div class="name">${esc(it.name)}</div>
       <div class="meta">やり方：${esc(it.method)}</div>
       <div class="meta">強度：${esc(it.dose)} ／ 休息：${esc(it.rest)}</div>
-      <div class="cue"><b>注意：</b>${esc(it.cue)}</div>
     </div></li>`;
   }).join("");
 
-listC.innerHTML = LIB.gym10.map(x=>{
-  return `<li>
-    <div class="itemBox">
-      <div class="name">${esc(x)}</div>
-      <div class="meta">目安：8〜12回 × 3set｜RPE8–9</div>
-      <div class="cue"><b>注意：</b>フォームが崩れたら即重量を下げる</div>
-    </div>
-  </li>`;
-}).join("");
+  listC.innerHTML = LIB.gym10.map(x=>{
+    return `<li>
+      <div class="itemBox">
+        <div class="name">${esc(x)}</div>
+        <div class="meta">目安：8〜12回 × 3set｜RPE8–9</div>
+      </div>
+    </li>`;
+  }).join("");
 }
+
 
 function fillList(id, arr){
   const el = document.getElementById(id);
@@ -1030,6 +1079,7 @@ function flash(msg){
 /* boot */
 (function boot(){
   renderMenu();
+  renderHistory();
   renderLib();
   loadProgress();
   if ("serviceWorker" in navigator) {
