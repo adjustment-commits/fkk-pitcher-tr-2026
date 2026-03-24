@@ -365,7 +365,7 @@ details[open] .blockSummary .icon::before{
     <div class="tagLine" style="margin-top:6px">
       <span class="tag"><b>目的</b>：支点・支持・ヒップイン・ジャンプ・キャッチ</span>
     </div>
-    <ol class="ol" id="listLowerMain"></ol>
+    <div id="listLowerMain"></div>
   </details>
 
   <details class="card" open>
@@ -656,154 +656,54 @@ const BLOCK_RUN_MAIN = [
 ];
 
 const BLOCK_LOWER_MAIN = [
-/* ① #0,#18,#19 */
-{
-name:"①｜スクワット",
-method:"支点",
-dose:"8回×3｜RPE8",rest:"休60秒"
-},
-{
-name:"①｜RDL",
-method:"ヒンジ",
-dose:"8回×3｜RPE8",rest:"休60秒"
-},
-{
-name:"①｜スクワットジャンプ",
-method:"出力",
-dose:"5回×3｜RPE8",rest:"休60秒"
-},
-{
-name:"①｜MBキャッチ",
-method:"受ける",
-dose:"8回×2｜RPE8",rest:"休45秒"
-},
-{
-name:"①｜バンド→サイドウォーク",
-method:"横制御",
-dose:"10m×3",rest:"休45秒"
-},
-{
-name:"①｜SLスクワットウォーク",
-method:"支持",
-dose:"10m×2",rest:"休45秒"
-},
-{
-name:"①｜SLバックランジ",
-method:"支持",
-dose:"左右8回×2",rest:"休45秒"
-},
-  
-/* ② #14,#20 */
-{
-name:"②｜BOX jump 大腿骨レバー",
-method:"出力",
-dose:"5回×2｜RPE8",rest:"休60秒"
-},
-{
-name:"②｜BOX jump → スクワット",
-method:"出力→吸収",
-dose:"5回×2｜RPE8",rest:"休60秒"
-},
-{
-name:"②｜スクワットジャンプ",
-method:"爆発",
-dose:"5回×3｜RPE8",rest:"休60秒"
-},
-{
-name:"②｜MBスクワットキャッチ",
-method:"吸収",
-dose:"8回×2｜RPE8",rest:"休45秒"
-},
-{
-name:"②｜バンド→サイドウォークスクワット",
-method:"横＋下",
-dose:"10m×3",rest:"休45秒"
-},
-{
-name:"②｜SLラテラルステップ",
-method:"横制御",
-dose:"左右8回×2",rest:"休45秒"
-},
-{
-name:"②｜RDL",
-method:"股関節",
-dose:"8回×3｜RPE8",rest:"休60秒"
-},
-
-/* ③ #1,#11,#12 */
-{
-name:"③｜スクワット",
-method:"基礎",
-dose:"8回×3｜RPE7",rest:"休60秒"
-},
-{
-name:"③｜RDL",
-method:"基礎",
-dose:"8回×3｜RPE7",rest:"休60秒"
-},
-{
-name:"③｜バンド→サイドウォーク",
-method:"横",
-dose:"10m×3",rest:"休45秒"
-},
-{
-name:"③｜SLスクワットウォーク",
-method:"支持",
-dose:"10m×2",rest:"休45秒"
-},
-{
-name:"③｜SLラテラルステップ",
-method:"横",
-dose:"左右8回×2",rest:"休45秒"
-},
-{
-name:"③｜スローイングランジウォーク",
-method:"連動",
-dose:"10m×2",rest:"休45秒"
-},
-{
-name:"③｜MBキャッチ（軽）",
-method:"導入",
-dose:"8回×2",rest:"休45秒"
-},
-
-/* ④ #17,#21 */
-{
-name:"④｜BOX drop 大腿骨レバー",
-method:"落下→支点保持",
-dose:"5回×2｜RPE8",rest:"休60秒"
-},
-{
-name:"④｜BOX drop → ヒップイン",
-method:"吸収→内旋制御",
-dose:"5回×2｜RPE8",rest:"休60秒"
-},
-{
-name:"④｜MBヒップインキャッチ",
-method:"ヒップインで受ける",
-dose:"8回×2｜RPE8",rest:"休45秒"
-},
-{
-name:"④｜3テンポジャンプ → ヒップイン",
-method:"着地→即ヒップイン",
-dose:"5回×2｜RPE8",rest:"休60秒"
-},
-{
-name:"④｜SLラテラルジャンプ",
-method:"横制御",
-dose:"左右6回×2",rest:"休45秒"
-},
-{
-name:"④｜SLバックランジ",
-method:"支持",
-dose:"左右8回×2",rest:"休45秒"
-},
-{
-name:"④｜スローイングランジウォーク",
-method:"連動",
-dose:"10m×2",rest:"休45秒"
-},
-
+  {
+    group:"①｜#0 #18 #19（140キロ / 出力を上げつつ制御）",
+    items:[
+      { name:"①｜スクワット", method:"支点", dose:"8回×3｜RPE8", rest:"休60秒" },
+      { name:"①｜RDL", method:"ヒンジ", dose:"8回×3｜RPE8", rest:"休60秒" },
+      { name:"①｜スクワットジャンプ", method:"出力", dose:"5回×3｜RPE8", rest:"休60秒" },
+      { name:"①｜MBキャッチ", method:"受ける", dose:"8回×2｜RPE8", rest:"休45秒" },
+      { name:"①｜バンド→サイドウォーク", method:"横制御", dose:"10m×3", rest:"休45秒" },
+      { name:"①｜SLスクワットウォーク", method:"支持", dose:"10m×2", rest:"休45秒" },
+      { name:"①｜SLバックランジ", method:"支持", dose:"左右8回×2", rest:"休45秒" }
+    ]
+  },
+  {
+    group:"②｜#14 #20（145キロ / 安定しているのでさらに上）",
+    items:[
+      { name:"②｜BOX jump 大腿骨レバー", method:"出力", dose:"5回×2｜RPE8", rest:"休60秒" },
+      { name:"②｜BOX jump → スクワット", method:"出力→吸収", dose:"5回×2｜RPE8", rest:"休60秒" },
+      { name:"②｜スクワットジャンプ", method:"爆発", dose:"5回×3｜RPE8", rest:"休60秒" },
+      { name:"②｜MBスクワットキャッチ", method:"吸収", dose:"8回×2｜RPE8", rest:"休45秒" },
+      { name:"②｜バンド→サイドウォークスクワット", method:"横＋下", dose:"10m×3", rest:"休45秒" },
+      { name:"②｜SLラテラルステップ", method:"横制御", dose:"左右8回×2", rest:"休45秒" },
+      { name:"②｜RDL", method:"股関節", dose:"8回×3｜RPE8", rest:"休60秒" }
+    ]
+  },
+  {
+    group:"③｜#1 #11 #12（135キロ / 構築段階）",
+    items:[
+      { name:"③｜スクワット", method:"基礎", dose:"8回×3｜RPE7", rest:"休60秒" },
+      { name:"③｜RDL", method:"基礎", dose:"8回×3｜RPE7", rest:"休60秒" },
+      { name:"③｜バンド→サイドウォーク", method:"横", dose:"10m×3", rest:"休45秒" },
+      { name:"③｜SLスクワットウォーク", method:"支持", dose:"10m×2", rest:"休45秒" },
+      { name:"③｜SLラテラルステップ", method:"横", dose:"左右8回×2", rest:"休45秒" },
+      { name:"③｜スローイングランジウォーク", method:"連動", dose:"10m×2", rest:"休45秒" },
+      { name:"③｜MBキャッチ（軽）", method:"導入", dose:"8回×2", rest:"休45秒" }
+    ]
+  },
+  {
+    group:"④｜#17 #21（150キロ / 制御がほしい）",
+    items:[
+      { name:"④｜BOX drop 大腿骨レバー", method:"落下→支点保持", dose:"5回×2｜RPE8", rest:"休60秒" },
+      { name:"④｜BOX drop → ヒップイン", method:"吸収→内旋制御", dose:"5回×2｜RPE8", rest:"休60秒" },
+      { name:"④｜MBヒップインキャッチ", method:"ヒップインで受ける", dose:"8回×2｜RPE8", rest:"休45秒" },
+      { name:"④｜3テンポジャンプ → ヒップイン", method:"着地→即ヒップイン", dose:"5回×2｜RPE8", rest:"休60秒" },
+      { name:"④｜SLラテラルジャンプ", method:"横制御", dose:"左右6回×2", rest:"休45秒" },
+      { name:"④｜SLバックランジ", method:"支持", dose:"左右8回×2", rest:"休45秒" },
+      { name:"④｜スローイングランジウォーク", method:"連動", dose:"10m×2", rest:"休45秒" }
+    ]
+  }
 ];
 
 const BLOCK_UPPER_MAIN = [
@@ -1263,6 +1163,25 @@ function renderBlock(el, items){
     </div></li>`;
   }).join("");
 }
+function renderLowerGrouped(el, groups){
+  if(!el) return;
+  el.innerHTML = groups.map(g=>{
+    const items = g.items.map(it=>{
+      return `<li><div class="itemBox">
+        <div class="name">${esc(it.name)}</div>
+        <div class="meta">やり方：${esc(it.method)}</div>
+        <div class="meta">強度：${esc(it.dose)} ／ 休息：${esc(it.rest)}</div>
+      </div></li>`;
+    }).join("");
+
+    return `
+      <div style="margin:0 0 18px">
+        <div style="font-weight:800;font-size:1rem;margin:0 0 8px;color:#0f172a">${esc(g.group)}</div>
+        <ol class="ol" style="margin-top:0">${items}</ol>
+      </div>
+    `;
+  }).join("");
+}
 function renderTextBlock(el, items){
   if(!el) return;
   el.innerHTML = items.map(x=>{
@@ -1298,7 +1217,7 @@ function flash(msg){
 /* ===== render ===== */
 function renderMenu(){
   renderBlock(listRunMain, BLOCK_RUN_MAIN);
-  renderBlock(listLowerMain, BLOCK_LOWER_MAIN);
+  renderLowerGrouped(listLowerMain, BLOCK_LOWER_MAIN);
   renderBlock(listUpperMain, BLOCK_UPPER_MAIN);
   renderBlock(listCoreMain, BLOCK_CORE_MAIN);
 
